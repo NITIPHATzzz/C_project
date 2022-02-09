@@ -32,10 +32,6 @@
             <input type="text" name="username">
         </div>
         <div class="box">
-            <label for="email">อีเมล </label>
-            <input type="email" name="email">
-        </div>
-        <div class="box">
             <label for="password_1">รหัสผ่าน </label>
             <input type="password" name="password_1">
         </div>
