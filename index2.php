@@ -1,6 +1,25 @@
 <?php 
     session_start();
     include('server.php'); 
+    
+    $chair_check_query = "SELECT * FROM test";
+    $query = mysqli_query($conn, $chair_check_query);
+
+    if ($query->num_rows > 0) {
+        // output data of each row
+        echo "<table border='1'><th>time</th><th>alam</th>";
+        while($row = $query->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>".$row['time']."</td>";
+            echo "<td>".$row['alam']."</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "0 results";
+    }
+    $conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +34,17 @@
 <body>
     
     <div class="header">
-    <h1 class="fs-h4 text-center">สมัครสมาชิก</h1>
     </div>
 
     <form action="register_db.php" method="post">
         <div class="box">
-            <label for="password_2">test </label>
-            <input type="time" name="test">
+            <label for="test">test </label>
+            <input type="time" name="test"step="1">
         </div>
         <div >
-            <button type="submit" name="test" class="btn btn-secondary">สมัครสมาชิก</button>
+            <button type="submit" name="testt" class="btn btn-secondary">ส่ง</button>
         </div>
     </form>
-
+   
 </body>
 </html>
