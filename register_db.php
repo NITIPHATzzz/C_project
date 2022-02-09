@@ -53,5 +53,16 @@
             header("location: register.php");
         }
     }
+    if (isset($_POST['test'])) {
+        $test = $_POST['test'];
 
+        if (count($errors) == 0) {
+
+            $sql = "INSERT INTO test (alam) VALUES ('$test')";
+            mysqli_query($conn, $sql);
+            // header('location: login.php');
+        } else {
+            header("location: register.php");
+        }
+    }
 ?>
