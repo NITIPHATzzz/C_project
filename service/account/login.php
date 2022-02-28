@@ -4,7 +4,7 @@
     $requestMethod = $_SERVER["REQUEST_METHOD"];
 
     $data = file_get_contents("php://input");
-    echo $data;
+    // echo $data;
     $result = json_decode($data, true);
 
     if ($requestMethod == 'POST'){
@@ -15,10 +15,12 @@
         $sql_login = "SELECT *FROM `users` WHERE username = '$username' AND password = '$f_password'";
         $sql_loginQ = mysqli_query($conn,$sql_login);
         $row=mysqli_fetch_assoc($sql_loginQ);
-        if($row!=null){
-            echo "complete";
-        }else{
+        if(!$row){
+            
             echo "fail";
+        }else{
+            $obj[] = $row;
+            echo json_encode($obj);
         }
     }else{
         echo "error";
